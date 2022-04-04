@@ -1,21 +1,19 @@
 import express, {NextFunction, Request, Response} from 'express';
 
-const PORT = 3033;
-
+// create app and add middleware
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// main route
 app.get('/', (req: Request, res: Response) => {
-  return res.send({ text: 'Hello', date: new Date() });
+  return res.send({ text: 'Hello', date: new Date(), value: Math.random() });
 });
 
 // error handler
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => { // eslint-disable-line  @typescript-eslint/no-unused-vars
-  console.error(err.stack);
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => { // eslint-disable-line @typescript-eslint/no-unused-vars
+  console.error(err.stack); // eslint-disable-line no-console
   res.status(500).send('Server Error');
 });
 
-app.listen(3033, () => {
-  console.log('TS Server ' + PORT + ' ' + new Date());
-});
+export default app;

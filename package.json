@@ -2,12 +2,14 @@
   "name": "ts-generic",
   "description": "Express server using Typescript",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app/index.ts",
   "scripts": {
+    "check-types": "tsc --noemit",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
     "start": "ts-node-dev --respawn --transpile-only app/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "x": "tsc"
   },
   "dependencies": {
     "express": "^4.17.3"
